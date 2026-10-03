@@ -1,0 +1,14 @@
+services:
+  - type: worker
+    name: python-bot-hosting
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: python hosting_render_fixed.py
+    envVars:
+      - key: BOT_TOKEN
+        sync: false
+      - key: ADMIN_ID
+        sync: false
+      - key: STORAGE_DIR
+        value: /var/data
+    autoDeploy: true
